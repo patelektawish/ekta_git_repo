@@ -14,6 +14,7 @@ public class ContactSalesTest {
     WebDriver driver;
     MainNavigation nav;
     ContactSalePage cp;
+    
     @BeforeSuite
     public void setup(){
         WebDriverManager.chromedriver().setup();
