@@ -2,27 +2,39 @@ package TestCases;
 
 import PageObjectModel.ContactSalePage;
 import PageObjectModel.MainNavigation;
+import config.AppConfig;
+import drivermanager.DriverManager;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import listner.ScreenShotListner;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+@Listeners({ScreenShotListner.class})
 public class ContactSalesTest {
-    WebDriver driver;
+    WebDriver driver= DriverManager.getinstance();
+    Logger logger= LogManager.getLogger(ContactSalesTest.class);
+
     MainNavigation nav;
     ContactSalePage cp;
-    
+
     @BeforeSuite
     public void setup(){
-        WebDriverManager.chromedriver().setup();
-        driver=new ChromeDriver();
+  //      WebDriverManager.chromedriver().setup();
+  //      driver=new ChromeDriver();
         driver.manage().window().maximize();
-        driver.get("https://zoom.us");
+        logger.log(Level.INFO ,"opening url{}",AppConfig.getProperty("url"));
+        driver.get(AppConfig.getProperty("url"));
         nav =new MainNavigation(driver);
     }
+
     @Test
     public void contacttest(){
         cp=nav.ClickonContactSale();

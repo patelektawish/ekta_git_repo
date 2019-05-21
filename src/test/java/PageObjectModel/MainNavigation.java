@@ -2,8 +2,6 @@ package PageObjectModel;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -39,6 +37,10 @@ import org.openqa.selenium.support.PageFactory;
         public ContactSalePage ClickonContactSale(){
             this.ContactSale.click();
             return new ContactSalePage(this.driver);
+        }
+        public RoomAndWorkspacePage clickonRoomsolution(){
+            this.solution.click();
+            return new RoomAndWorkspacePage(this.driver);
         }
     }
 
